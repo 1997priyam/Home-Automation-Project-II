@@ -10,8 +10,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 }
 else {
 	require_once 'config.php';
-	echo $_SESSION['username'];
-	echo "<br/><a href='logout.php'>Logout</a>";
 	 }
 ?>
 
@@ -20,6 +18,7 @@ else {
 <head>
     <meta charset="UTF-8">
     <title>Control</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript">
 	</script>
 <script type="text/javascript">
@@ -102,20 +101,49 @@ humidity.value= message.payloadString+"%";
 	
   }
 </script>
-    
+    <style type="text/css">
+        body{ font: 14px sans-serif;
+		padding-top: 60px;
+        padding-bottom: 40px;
+		}
+        .wrapper{ width: 350px; padding: 20px; padding-top: 120px; padding-bottom: 100px; }
+    </style>
 </head>
+<?php include("header.html");?>
 <body>
+<div class="wrapper">
+<div><h3>Welcome <?php echo $_SESSION['username'] ?> </h3></div>
+<div>
+<a href="logout.php" class="btn btn-primary" role="button">Logout</a>
+  </div>
+<div class="panel panel-default">
+<div class="panel-body">
     <h2> Switch 1 </h2> <br>
-	<button type="button" onClick="publishOne()">ON</button>
-	<button type="button" onClick="publishZero()">OFF</button>
+	<div class="form-group">
+	<button type="button" class="btn btn-success" onClick="publishOne()">ON</button>
+	<button type="button" class="btn btn-danger" onClick="publishZero()">OFF</button>
+	</div></div>
 	<br>
+	<div class="panel-body">
 	<h2> Switch 2 </h2> <br>
-	<button type="button" onClick="publishOne2()">ON</button>
-	<button type="button" onClick="publishZero2()">OFF</button>
+	<div class="form-group">
+	<button type="button" class="btn btn-success" onClick="publishOne2()">ON</button>
+	<button type="button" class="btn btn-danger" onClick="publishZero2()">OFF</button>
+	</div>
+	</div>
+	</div>
 	<br>
-	<h2>Temperature : </h2> <input type="text" name="temperature" id="temp" readonly="true" /> <br>
-	<h2> Humidity : </h2> <input type="text" name="humidity" id="humidity" readonly="true" />
-	
+	<div class="form-group">
+	<label>Temperature</label>
+	<input type="text" class="form-control input-sm" name="temperature" id="temp" readonly="true" />
+</div>
+	<br>
+	<div class="form-group">
+	<label>Humidity</label>
+	 <input type="text" class="form-control input-sm" name="humidity" id="humidity" readonly="true" />
+	 </div>
+	</div>
 	
 </body>
 </html>
+<?php include("footer.html");?>

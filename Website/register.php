@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+ <?php include("header.html");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,8 +121,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
+        body{ font: 14px sans-serif;
+padding-top: 60px;
+        padding-bottom: 40px;		}
+        .wrapper{ width: 350px; padding: 20px; padding-top: 120px; padding-bottom: 100px;}
     </style>
 </head>
 <body>
@@ -159,3 +161,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>    
 </body>
 </html>
+
+<?php include("footer.html");?>

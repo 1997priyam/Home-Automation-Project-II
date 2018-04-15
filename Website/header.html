@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bitvolt</title>
+<style type="text/css">
+    /* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+    body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .container{
+        width: 80%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+    .fixed-header, .fixed-footer{
+	z-index: 1;
+        width: 100%;
+        position: absolute;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }    
+    /* Some more styles to beutify this example */
+    nav a{
+        color: #fff;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+    }
+    .container p{
+        line-height: 200px; /* Create scrollbar to test positioning */
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+		<h2 align="center"> Home Automation System </h2><h3 align="center">Made By: <a href="http://priyamagarwal.com" target="_blank">Priyam Agarwal</a></h3>
+		
+            <nav>
+                <a href="index.html">Home</a>
+             
+                <a href="register.php">Register</a>
+                <a href="login.php">Login</a>
+                
+            </nav>
+        </div>
+    </div>
+    
+</body>
+</html>                            

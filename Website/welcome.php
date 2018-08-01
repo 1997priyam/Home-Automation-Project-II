@@ -53,24 +53,32 @@ function publishOne()
 {
 message = new Paho.MQTT.Message("1");
     message.destinationName = "/<?php echo $_SESSION['username']?>/light";
-    client.send(message);
+	message.qos=1;
+	message.retained= true;
+	client.send(message);
   }
 function publishOne2()
 {
 message = new Paho.MQTT.Message("1");
     message.destinationName = "/<?php echo $_SESSION['username']?>/light2";
+	message.qos=1;
+	message.retained= true;
     client.send(message);
   }
 function publishZero()
 {
 message = new Paho.MQTT.Message("0");
     message.destinationName = "/<?php echo $_SESSION['username']?>/light";
+	message.qos=1;
+	message.retained= true;
     client.send(message);
   }
 function publishZero2()
 {
 message = new Paho.MQTT.Message("0");
     message.destinationName = "/<?php echo $_SESSION['username']?>/light2";
+	message.qos=1;
+	message.retained= true;
     client.send(message);
   }
   function doFail(e){
@@ -81,7 +89,7 @@ message = new Paho.MQTT.Message("0");
   function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
       console.log("onConnectionLost:"+responseObject.errorMessage);
-    }
+	  }
   }
 
   // called when a message arrives

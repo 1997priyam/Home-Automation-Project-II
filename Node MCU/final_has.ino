@@ -16,6 +16,8 @@ unsigned long lastMillis = 0;
 void setup() {
   pinMode(2, OUTPUT);
   pinMode(0,OUTPUT);
+  digitalWrite(2, HIGH);
+  digitalWrite(0, HIGH);
  Serial.begin(115200);
  delay(10);
  Serial.println();
@@ -47,8 +49,8 @@ void connect() {
  }
  
  Serial.println("\nconnected!");
- client.subscribe("/priyam/light");
- client.subscribe("/priyam/light2");
+ client.subscribe("/priyam/light", 1);
+ client.subscribe("/priyam/light2", 1);
 }
  
 void loop() {
@@ -66,10 +68,10 @@ void loop() {
 if(millis() - lastMillis > 3000)
 {
    lastMillis = millis();
-   client.publish("/priyam/temp", (String)temp);
+   client.publish("/priyam/temp", (String)temp, false, 1);
   Serial.println(temp);
-  delay(100);
-   client.publish("/priyam/humidity", (String)humidity);
+  delay(200);
+   client.publish("/priyam/humidity", (String)humidity, false, 1);
    Serial.println(humidity);
  }
    
